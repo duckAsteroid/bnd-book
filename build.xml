@@ -1,0 +1,13 @@
+<project name="BND Book" default="publish" basedir=".">
+	<target name="publish">
+		<copy todir="published/">
+			<fileset dir="docs/">
+				<include name="img/*"/>
+			</fileset>
+		</copy>
+		<exec executable="/home/chris/bin/pf">
+			<arg value="docs/"/>
+			<arg value="published/"/>
+		</exec>
+	</target>
+</project>
