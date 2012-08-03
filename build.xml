@@ -15,4 +15,15 @@
 			<arg value="${pub-dir}"/>
 		</exec>
 	</target>
+	<target name="epub" depends="publish">
+		<exec executable="pandoc">
+			<arg value="-f"/>
+			<arg value="html"/>
+			<arg value="-t"/>
+			<arg value="epub"/>
+			<arg value="-o"/>
+			<arg value="bnd-book.epub"/>
+			<arg value="${pub-dir}/Combined+Pages.html"/>
+		</exec>
+	</target>
 </project>
