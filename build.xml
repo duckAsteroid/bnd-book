@@ -1,13 +1,18 @@
 <project name="BND Book" default="publish" basedir=".">
+    <property name="pub-dir" value="published/"/>
+    <property name="src-dir" value="docs/"/>
 	<target name="publish">
-		<copy todir="published/">
-			<fileset dir="docs/">
+		<mkdir dir="${pub-dir}"/>
+	    <delete dir="${pub-dir}"/>
+		<mkdir dir="${pub-dir}"/>
+		<copy todir="${pub-dir}">
+			<fileset dir="${src-dir}">
 				<include name="img/*"/>
 			</fileset>
 		</copy>
 		<exec executable="/home/chris/bin/pf">
-			<arg value="docs/"/>
-			<arg value="published/"/>
+			<arg value="${src-dir}"/>
+			<arg value="${pub-dir}"/>
 		</exec>
 	</target>
 </project>
