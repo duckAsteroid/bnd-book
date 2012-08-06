@@ -1,15 +1,19 @@
 <project name="BND Book" default="publish" basedir=".">
     <property name="pub-dir" value="published/"/>
     <property name="src-dir" value="docs/"/>
-	<target name="publish">
+	<target name="clean">
 		<mkdir dir="${pub-dir}"/>
 	    <delete dir="${pub-dir}"/>
 		<mkdir dir="${pub-dir}"/>
+	</target>
+	<target name="init">
 		<copy todir="${pub-dir}">
 			<fileset dir="${src-dir}">
 				<include name="img/*"/>
 			</fileset>
 		</copy>
+	</target>
+	<target name="publish" depends="clean,init">
 		<exec executable="/home/chris/bin/pf">
 			<arg value="${src-dir}"/>
 			<arg value="${pub-dir}"/>
@@ -25,5 +29,10 @@
 			<arg value="bnd-book.epub"/>
 			<arg value="${pub-dir}/Combined+Pages.html"/>
 		</exec>
+	</target>
+	<target name="war" depends="init">
+		<war destfile="bnd-book.war" needxmlfile="false">
+			<fileset dir="${pub-dir}"/>
+		</war>
 	</target>
 </project>
