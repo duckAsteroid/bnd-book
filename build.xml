@@ -1,11 +1,25 @@
 <project name="BND Book" default="publish" basedir=".">
+	<property environment="env"/>
     <property name="pub-dir" value="published/"/>
     <property name="src-dir" value="docs/"/>
+	
 	<target name="clean">
 		<mkdir dir="${pub-dir}"/>
 	    <delete dir="${pub-dir}"/>
 		<mkdir dir="${pub-dir}"/>
 	</target>
+	
+	<target name="props">
+		<!-- Append build info to template.properties - makes them available to Markdown -->
+		<propertyfile file="${src-dir}/template.properties">
+			<entry key="version" value="1.0"/>
+			<entry key="build.number" value="${env.BUILD_NUMBER}"/>
+			<entry key="build.id" value="${env.BUILD_ID}"/>
+			<entry key="build.date" type="date" value="now" pattern="dd MMM yyyy"/>
+			<entry key="build.time" type="date" value="now" pattern="hh:mm zzz"/>
+		</propertyfile>
+	</target>
+	
 	<target name="init">
 		<copy todir="${pub-dir}">
 			<fileset dir="${src-dir}">
@@ -13,12 +27,14 @@
 			</fileset>
 		</copy>
 	</target>
-	<target name="publish" depends="clean,init">
+	
+	<target name="publish" depends="clean,init,props">
 		<exec executable="/home/chris/bin/pf">
 			<arg value="${src-dir}"/>
 			<arg value="${pub-dir}"/>
 		</exec>
 	</target>
+	
 	<target name="epub" depends="publish">
 		<exec executable="pandoc">
 			<arg value="-f"/>
@@ -30,6 +46,7 @@
 			<arg value="${pub-dir}/Combined+Pages.html"/>
 		</exec>
 	</target>
+	
 	<target name="war" depends="init">
 		<war destfile="bnd-book.war" needxmlfile="false">
 			<fileset dir="${pub-dir}"/>
