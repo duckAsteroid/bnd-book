@@ -14,10 +14,10 @@
 		<!-- Append build info to template.properties - makes them available to Markdown -->
 		<propertyfile file="${src-dir}/template.properties">
 			<entry key="version" value="1.0"/>
-			<entry key="build.number" value="${env.BUILD_NUMBER}"/>
-			<entry key="build.id" value="${env.BUILD_ID}"/>
-			<entry key="build.date" type="date" value="now" pattern="dd MMM yyyy"/>
-			<entry key="build.time" type="date" value="now" pattern="hh:mm zzz"/>
+			<entry key="build_number" value="${env.BUILD_NUMBER}"/>
+			<entry key="build_id" value="${env.BUILD_ID}"/>
+			<entry key="build_date" type="date" value="now" pattern="dd MMM yyyy"/>
+			<entry key="build_time" type="date" value="now" pattern="HH:mm (zzz)"/>
 		</propertyfile>
 	</target>
 	
