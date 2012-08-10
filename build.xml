@@ -1,6 +1,6 @@
 <project name="BND Book" default="publish" basedir=".">
 	<property environment="env"/>
-    <property name="pub-dir" value="published/"/>
+    <property name="pub-dir" value="target/docs/"/>
     <property name="src-dir" value="docs/"/>
 	
 	<target name="clean">
@@ -50,7 +50,12 @@
 	
 	<target name="war" depends="init">
 		<war destfile="bnd-book.war" needxmlfile="false">
-			<fileset dir="${pub-dir}"/>
+			<fileset dir="${pub-dir}">
+				<include name="**/*.png"/>
+				<include name="**/*.html"/>
+				<include name="**/*.css"/>
+				<include name="**/*.js"/>
+			</fileset>
 		</war>
 	</target>
 </project>
