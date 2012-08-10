@@ -4,12 +4,13 @@
     <property name="src-dir" value="docs/"/>
 	
 	<target name="clean">
+		<delete file="bnd-book.war"/>
 		<mkdir dir="${pub-dir}"/>
-	    <delete dir="${pub-dir}"/>
+		<delete dir="${pub-dir}"/>
 		<mkdir dir="${pub-dir}"/>
 	</target>
 	
-	<target name="props">
+	<target name="props" depends="clean">
 		<!-- Append build info to template.properties - makes them available to Markdown -->
 		<propertyfile file="${src-dir}/template.properties">
 			<entry key="version" value="1.0"/>
