@@ -3,6 +3,8 @@ bnd-book
 
 An online eBook about the BND tool for OSGi.
 
+The latest copy from this repository is deployed to CloudBees: http://bnd-book.duck-asteroid.cloudbees.net/BND.html
+
 Created from [the original BND book/manual](http://www.aqute.biz/Bnd/Bnd) by [Peter Kriens][1]
 
 Building
