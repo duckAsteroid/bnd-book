@@ -1,4 +1,4 @@
-/* @override http://127.0.0.1:51411/css/cookbook.css */
+ma/* @override http://127.0.0.1:51411/css/cookbook.css */
 
 img {
   border: 1pt solid silver;
@@ -29,7 +29,7 @@ strong {
 }
 
 ol.toc  {
-	list-style-type: upper-latin;
+	list-style-type: decimal;
 }
 
 ol.toc li ol.toc  {
