@@ -1,0 +1,9 @@
+pre {	
+	padding: 0.25em;
+	border: 1pt solid silver;
+	background-color: #E6E6E6;
+}
+
+code {
+	font-size: small;
+}
