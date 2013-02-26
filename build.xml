@@ -2,6 +2,7 @@
 	<property environment="env"/>
     <property name="pub-dir" value="target/docs/"/>
     <property name="src-dir" value="docs/"/>
+    <property name="pamflet.exe" value="${user.home}/bin/pf"/>
 	
 	<target name="clean">
 		<delete file="bnd-book.war"/>
@@ -30,7 +31,7 @@
 	</target>
 	
 	<target name="publish" depends="clean,init,props">
-		<exec executable="/home/chris/bin/pf">
+		<exec executable="${pamflet.exe}">
 			<arg value="${src-dir}"/>
 			<arg value="${pub-dir}"/>
 		</exec>
